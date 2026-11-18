@@ -26,7 +26,7 @@ Dependencies point one way: app -> render -> core.
 ### Program Jobs
 | Job | Needs GL | Needs OS | Headless test |
 |-----|:---:|:---:|:---:|
-|Window and GL Context| ✓ | ✓ | |
+|Window and GL Context| | ✓ | |
 |Main Loop| | ✓ | |
 |Input Reading| | ✓ | |
 |Input Mapping| | | ✓ |
@@ -46,8 +46,19 @@ Recording and playback chosen to be included for easy retestability. I will
 be able to see slight changes to the physics and how they effect the same
 run.
 
-### Arc Diagram
+### Module Dependencies
 ```mermaid
-
+graph TD
+app --> core
+app --> graphics
+core
+graphics
 ```
+
+### Why this structure
+The app relies on the core and graphics, meaning that changes to 
+the app leave graphics and the core untouched. Testing can also occur on
+core on its own because it depends on nothing. Core and graphics
+also don't depend on each other, which means changing core doesn't
+rebuild graphics.
 

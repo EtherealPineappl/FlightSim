@@ -1,3 +1,5 @@
 # editor caches
 .vs/
+
+# Cmake build
 build/

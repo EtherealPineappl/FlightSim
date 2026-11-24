@@ -66,8 +66,8 @@ rebuild graphics.
 
 ### M0 — Design, Repo, and Window (Nov 22 · est. 4h)
 Done when:
-- [ ] `cmake --build` succeeds from a clean clone
-- [ ] Three targets: core, graphics, app
+- [ ✓ ] `cmake --build` succeeds from a clean clone
+- [ ✓ ] Three targets: core, graphics, app
 - [ ] App opens a GLFW window and logs the OpenGL version
 - [ ] CI compiles on windows
 

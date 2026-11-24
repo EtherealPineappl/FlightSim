@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(FlightSimulation LANGUAGES CXX)
+project(FlightSimulation LANGUAGES CXX C)
 
 # Fetch Content for GLFW
 include(FetchContent)
@@ -19,3 +19,5 @@ FetchContent_MakeAvailable(glfw)
 add_subdirectory(core)
 add_subdirectory(graphics)
 add_subdirectory(app)
+
+add_subdirectory(external/glad)

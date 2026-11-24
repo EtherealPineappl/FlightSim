@@ -26,12 +26,12 @@ int main() {
 	}
 
 	glfwMakeContextCurrent(window);
+	glfwSwapInterval(1); // Wait for vsync before swap; limit CPU usage
 
-	// swap waits for vsync, so the loop doesn't spin
+	
 	while (!glfwWindowShouldClose(window)) {
 		glfwSwapBuffers(window);
 		glfwPollEvents();
-		glfwSwapInterval(1);
 	}
 			
 	//Cleanup; reverse order of creation

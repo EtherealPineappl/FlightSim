@@ -7,12 +7,12 @@ int main() {
 	std::cout << "Core: " << core::version() << "\n";
 	std::cout << "Graphics: " << graphics::version() << "\n";
 
-	if (glfwInit() == GLFW_FALSE) { 
+	if (glfwInit() == GLFW_FALSE) {
 		std::cerr << "Couldn't initialize glfw\n";
-		return 1; 
+		return 1;
 	}
 
-	// glfw 4.6 so there are no deprecated APIs
+	// openGL 4.6 so there are no deprecated APIs
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -26,14 +26,21 @@ int main() {
 	}
 
 	glfwMakeContextCurrent(window);
-	glfwSwapInterval(1); // Wait for vsync before swap; limit CPU usage
 
+	if (!graphics::init(glfwGetProcAddress)) {
+		std::cerr << "Graphics init fail.\n";
+		glfwDestroyWindow(window);
+		glfwTerminate();
+		return 1;
+	}
 	
+	glfwSwapInterval(1); // Wait for vsync before swap; limit CPU usage
 	while (!glfwWindowShouldClose(window)) {
+
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
-			
+	
 	//Cleanup; reverse order of creation
 	glfwDestroyWindow(window);
 	glfwTerminate();
